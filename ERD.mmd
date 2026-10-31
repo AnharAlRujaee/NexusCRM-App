@@ -1,0 +1,10 @@
+erDiagram
+    Trainees ||--o{ Applications : submits
+    Trainees ||--o{ Mentors : meets
+    Trainees ||--o{ ProjectTracking : completes
+    Users {
+        int UserID PK
+        string Username
+        string Password
+        string Role
+    }

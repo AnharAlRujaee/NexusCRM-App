@@ -1,0 +1,31 @@
+# Secrets and credentials
+.env
+.env.*
+!.env.example
+token.json
+client_secret*.json
+credentials*.json
+
+# Python environment
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# IDE and OS
+.DS_Store
+.vscode/
+.idea/
+
+# Temporary files
+*.log
+*.tmp
+
+# Private CRM data
+data/*.xlsx
+
+# Local file references
+*.fileloc
+
+# Personal coursework
+assignment*.txt

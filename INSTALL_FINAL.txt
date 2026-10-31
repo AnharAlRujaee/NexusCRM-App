@@ -1,0 +1,24 @@
+NEXUS CRM — FINAL PROJECT UPDATE
+
+This ZIP is designed to update your EXISTING working project without repeating setup.
+
+1. Close Nexus CRM.
+2. Make a backup copy of your current project folder before applying the update.
+3. Extract/overlay the contents of this ZIP into your existing project root folder.
+   The ZIP contains project files at its root (core/, pages/, ui/, etc.).
+4. Do NOT delete or replace your existing local .env, .venv, token.json, or Google OAuth client-secret JSON file. They are intentionally not included in this ZIP.
+5. Open Terminal in your existing project folder and run:
+
+   source .venv/bin/activate
+   python main.py
+
+Your existing PostgreSQL, Gmail SMTP, Google Calendar token and OAuth client configuration should remain in place. The code will use the dedicated GOOGLE_CALENDAR_ID in your existing .env and deliberately refuses to fall back to your personal primary calendar.
+
+If you moved the project folder after creating .env, check that GOOGLE_CREDENTIALS_FILE and GOOGLE_TOKEN_FILE still point to the correct local files. Do not paste their contents into chat.
+
+The Admin calendar page supports creating, editing and cancelling events, search, meeting type/date/status filters, participant name/email/phone, linked mentor names, meeting links, and participant email invitations. New events request a Google Meet link when no manual meeting URL is supplied.
+
+Validation performed on this package:
+- All Python files compiled successfully.
+- 11 automated tests passed.
+- GUI appearance and live Google/PostgreSQL connectivity still need to be confirmed on your Mac because this build environment does not contain your local credentials or desktop session.

@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1120" viewBox="0 0 1600 1120">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#526579"/>
+    </marker>
+    <style>
+      .title { font: 700 32px -apple-system, BlinkMacSystemFont, sans-serif; fill: #142b3b; }
+      .subtitle { font: 15px -apple-system, BlinkMacSystemFont, sans-serif; fill: #526579; }
+      .stereo { font: 12px -apple-system, BlinkMacSystemFont, sans-serif; fill: #405667; }
+      .name { font: 700 17px -apple-system, BlinkMacSystemFont, sans-serif; fill: #163247; }
+      .body { font: 14px -apple-system, BlinkMacSystemFont, sans-serif; fill: #314b5d; }
+      .small { font: 13px -apple-system, BlinkMacSystemFont, sans-serif; fill: #314b5d; }
+      .line { stroke: #526579; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .dash { stroke-dasharray: 7 6; }
+      .classbox { stroke: #71869a; stroke-width: 1.6; rx: 8; }
+      .divider { stroke: #8ea1b2; stroke-width: 1; }
+    </style>
+  </defs>
+  <rect width="1600" height="1120" fill="#f3f7fa"/>
+  <text x="54" y="58" class="title">NEXUS CRM | Application &amp; Deployment UML</text>
+  <text x="55" y="86" class="subtitle">PyQt6 desktop client · Google Drive workbooks · per-user OAuth · native Windows and macOS builds</text>
+
+  <rect x="50" y="112" width="1500" height="178" rx="12" fill="#e8eff4" stroke="#9aabba" stroke-width="1.5"/>
+  <text x="76" y="142" class="stereo">&lt;&lt;build pipeline&gt;&gt;</text>
+  <text x="76" y="168" class="name">GitHub Actions + PyInstaller</text>
+  <text x="76" y="195" class="body">Installs requirements-build.txt, packages the app, and publishes one ZIP artifact per target.</text>
+  <path d="M800 207 V226 M800 226 H296 V244 M800 226 V244 M800 226 H1304 V244" class="line"/>
+  <rect x="100" y="244" width="390" height="34" rx="7" fill="#d9e9f6" stroke="#7d9db5"/>
+  <text x="295" y="267" text-anchor="middle" class="small">Windows x64 · NexusCRM.exe + app folder</text>
+  <rect x="605" y="244" width="390" height="34" rx="7" fill="#e1ebdf" stroke="#89a184"/>
+  <text x="800" y="267" text-anchor="middle" class="small">macOS Intel · NexusCRM.app</text>
+  <rect x="1110" y="244" width="390" height="34" rx="7" fill="#e1ebdf" stroke="#89a184"/>
+  <text x="1305" y="267" text-anchor="middle" class="small">macOS Apple Silicon · NexusCRM.app</text>
+
+  <g>
+    <rect x="55" y="340" width="330" height="226" fill="#e2edf6" class="classbox"/>
+    <text x="220" y="363" text-anchor="middle" class="stereo">&lt;&lt;controller&gt;&gt;</text>
+    <text x="220" y="389" text-anchor="middle" class="name">CRMWindow</text>
+    <line x1="55" y1="402" x2="385" y2="402" class="divider"/>
+    <text x="74" y="427" class="body">+ pages: dict</text>
+    <text x="74" y="450" class="body">+ username, is_admin</text>
+    <line x1="55" y1="464" x2="385" y2="464" class="divider"/>
+    <text x="74" y="489" class="body">+ go(key)</text>
+    <text x="74" y="512" class="body">+ login(...) / sign_out()</text>
+    <text x="74" y="535" class="body">+ poll Drive + sync Calendar</text>
+  </g>
+  <g>
+    <rect x="435" y="340" width="330" height="226" fill="#e8f0df" class="classbox"/>
+    <text x="600" y="363" text-anchor="middle" class="stereo">&lt;&lt;view&gt;&gt;</text>
+    <text x="600" y="389" text-anchor="middle" class="name">LoginPage / SignupPage</text>
+    <line x1="435" y1="402" x2="765" y2="402" class="divider"/>
+    <text x="454" y="427" class="body">+ username, password inputs</text>
+    <text x="454" y="450" class="body">+ authenticate / register</text>
+    <line x1="435" y1="464" x2="765" y2="464" class="divider"/>
+    <text x="454" y="489" class="body">+ attempt_login()</text>
+    <text x="454" y="512" class="body">+ report DataError to user</text>
+    <text x="454" y="535" class="body">+ navigate through CRMWindow</text>
+  </g>
+  <g>
+    <rect x="815" y="340" width="390" height="226" fill="#f7ead9" class="classbox"/>
+    <text x="1010" y="363" text-anchor="middle" class="stereo">&lt;&lt;views&gt;&gt;</text>
+    <text x="1010" y="389" text-anchor="middle" class="name">CRM Pages</text>
+    <line x1="815" y1="402" x2="1205" y2="402" class="divider"/>
+    <text x="834" y="427" class="body">Preferences / Admin Preferences</text>
+    <text x="834" y="450" class="body">Applications / Mentor / Interviews</text>
+    <line x1="815" y1="464" x2="1205" y2="464" class="divider"/>
+    <text x="834" y="489" class="body">Search, filter, display workbook data</text>
+    <text x="834" y="512" class="body">Admin events and email composition</text>
+    <text x="834" y="535" class="body">Built with shared PyQt6 UI components</text>
+  </g>
+  <g>
+    <rect x="1255" y="340" width="290" height="226" fill="#eee7f4" class="classbox"/>
+    <text x="1400" y="363" text-anchor="middle" class="stereo">&lt;&lt;framework&gt;&gt;</text>
+    <text x="1400" y="389" text-anchor="middle" class="name">PyQt6 UI</text>
+    <line x1="1255" y1="402" x2="1545" y2="402" class="divider"/>
+    <text x="1274" y="427" class="body">QApplication / QMainWindow</text>
+    <text x="1274" y="450" class="body">QStackedWidget navigation</text>
+    <line x1="1255" y1="464" x2="1545" y2="464" class="divider"/>
+    <text x="1274" y="489" class="body">Threads and timers</text>
+    <text x="1274" y="512" class="body">Custom widgets / animations</text>
+  </g>
+
+  <path d="M385 453 H435" class="line"/>
+  <path d="M765 453 H815" class="line"/>
+  <path d="M1205 453 H1255" class="line"/>
+
+  <g>
+    <rect x="70" y="660" width="350" height="226" fill="#e8f0df" class="classbox"/>
+    <text x="245" y="683" text-anchor="middle" class="stereo">&lt;&lt;data access&gt;&gt;</text>
+    <text x="245" y="709" text-anchor="middle" class="name">Data Store</text>
+    <line x1="70" y1="722" x2="420" y2="722" class="divider"/>
+    <text x="89" y="747" class="body">authenticate / register users</text>
+    <text x="89" y="770" class="body">load Applications / Mentor / Interviews</text>
+    <line x1="70" y1="784" x2="420" y2="784" class="divider"/>
+    <text x="89" y="809" class="body">parse workbook bytes with openpyxl</text>
+    <text x="89" y="832" class="body">map dated rows to Calendar events</text>
+    <text x="89" y="855" class="body">cache shared workbook data</text>
+  </g>
+  <g>
+    <rect x="485" y="660" width="350" height="226" fill="#dcecf0" class="classbox"/>
+    <text x="660" y="683" text-anchor="middle" class="stereo">&lt;&lt;integration&gt;&gt;</text>
+    <text x="660" y="709" text-anchor="middle" class="name">Google Drive Client</text>
+    <line x1="485" y1="722" x2="835" y2="722" class="divider"/>
+    <text x="504" y="747" class="body">OAuth credentials and token</text>
+    <text x="504" y="770" class="body">download / upload workbooks</text>
+    <line x1="485" y1="784" x2="835" y2="784" class="divider"/>
+    <text x="504" y="809" class="body">60-second refresh after login</text>
+    <text x="504" y="832" class="body">credentials stay outside the app bundle</text>
+  </g>
+  <g>
+    <rect x="900" y="660" width="300" height="226" fill="#f7ead9" class="classbox"/>
+    <text x="1050" y="683" text-anchor="middle" class="stereo">&lt;&lt;integration&gt;&gt;</text>
+    <text x="1050" y="709" text-anchor="middle" class="name">Calendar Service</text>
+    <line x1="900" y1="722" x2="1200" y2="722" class="divider"/>
+    <text x="919" y="747" class="body">sync dated source rows</text>
+    <text x="919" y="770" class="body">fetch / update managed events</text>
+    <line x1="900" y1="784" x2="1200" y2="784" class="divider"/>
+    <text x="919" y="809" class="body">uses Google OAuth</text>
+    <text x="919" y="832" class="body">only Admin page loads events</text>
+  </g>
+  <g>
+    <rect x="1265" y="660" width="280" height="226" fill="#eee7f4" class="classbox"/>
+    <text x="1405" y="683" text-anchor="middle" class="stereo">&lt;&lt;integration&gt;&gt;</text>
+    <text x="1405" y="709" text-anchor="middle" class="name">Mailer</text>
+    <line x1="1265" y1="722" x2="1545" y2="722" class="divider"/>
+    <text x="1284" y="747" class="body">SMTP over TLS</text>
+    <text x="1284" y="770" class="body">Gmail App Password config</text>
+    <line x1="1265" y1="784" x2="1545" y2="784" class="divider"/>
+    <text x="1284" y="809" class="body">separate from OAuth</text>
+    <text x="1284" y="832" class="body">credentials stay local</text>
+  </g>
+
+  <path d="M220 566 V620 H245 V660" class="line dash"/>
+  <path d="M245 886 V925 H660 V886" class="line"/>
+  <text x="445" y="916" class="small">workbook sync</text>
+  <path d="M420 772 H485" class="line"/>
+  <path d="M835 772 H900" class="line"/>
+  <text x="850" y="758" class="small">source events</text>
+  <path d="M1200 772 H1265" class="line dash"/>
+
+  <rect x="70" y="970" width="1460" height="105" rx="10" fill="#ffffff" stroke="#9aabba" stroke-width="1.5"/>
+  <text x="94" y="1000" class="stereo">&lt;&lt;deployment configuration&gt;&gt;</text>
+  <text x="94" y="1030" class="body">Windows: %LOCALAPPDATA%\NexusCRM\credentials.json and token.json</text>
+  <text x="805" y="1030" class="body">macOS: ~/Library/Application Support/NexusCRM/credentials.json and token.json</text>
+  <text x="94" y="1056" class="small">Each recipient must authorize Google OAuth and have access to the shared Drive folder. Builds are OS- and CPU-specific.</text>
+</svg>

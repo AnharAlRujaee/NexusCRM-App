@@ -1,0 +1,60 @@
+name: Build desktop apps
+
+on:
+  workflow_dispatch:
+  push:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: windows-latest
+            target: Windows-x64
+          - runner: macos-15-intel
+            target: macOS-Intel
+          - runner: macos-15
+            target: macOS-AppleSilicon
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements-build.txt
+      - name: Package Windows app
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: >-
+          python -m PyInstaller --noconfirm --clean --onedir --windowed
+          --name NexusCRM --specpath build --workpath build/work --distpath dist
+          --collect-all googleapiclient --collect-all google_auth_oauthlib
+          --collect-all google.auth --collect-all google.oauth2
+          --hidden-import google_auth_httplib2 --collect-all httplib2 main.py
+      - name: Package macOS app
+        if: runner.os == 'macOS'
+        run: >-
+          python -m PyInstaller --noconfirm --clean --onedir --windowed
+          --name NexusCRM --specpath build --workpath build/work --distpath dist
+          --collect-all googleapiclient --collect-all google_auth_oauthlib
+          --collect-all google.auth --collect-all google.oauth2
+          --hidden-import google_auth_httplib2 --collect-all httplib2 main.py
+      - name: Archive Windows app
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: Compress-Archive -Path dist/NexusCRM -DestinationPath NexusCRM-${{ matrix.target }}.zip -Force
+      - name: Archive macOS app
+        if: runner.os == 'macOS'
+        run: ditto -c -k --sequesterRsrc --keepParent dist/NexusCRM.app NexusCRM-${{ matrix.target }}.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NexusCRM-${{ matrix.target }}
+          path: NexusCRM-${{ matrix.target }}.zip
+          if-no-files-found: error

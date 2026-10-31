@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760">
+<defs><style>
+.title{font:700 25px Arial;fill:#172033}.head{font:700 18px Arial;fill:#fff}.field{font:15px Arial;fill:#172033}.note{font:13px Arial;fill:#526078}.box{fill:#f8fafc;stroke:#64748b;stroke-width:2}.bar{fill:#334155}.line{stroke:#0f766e;stroke-width:2.5;fill:none}.label{font:700 14px Arial;fill:#0f766e}
+</style></defs>
+<rect width="1280" height="760" fill="#ffffff"/>
+<text x="40" y="42" class="title">NEXUS CRM — Entity Relationship Diagram</text>
+<text x="40" y="68" class="note">Five required tables · PK = Primary Key · FK = Foreign Key</text>
+<!-- Trainees -->
+<rect x="470" y="115" width="330" height="205" rx="8" class="box"/><path d="M478 115h314a8 8 0 0 1 8 8v33H470v-33a8 8 0 0 1 8-8" class="bar"/>
+<text x="490" y="142" class="head">Trainees</text>
+<text x="490" y="178" class="field">PK  TraineeID</text><text x="490" y="202" class="field">FullName</text><text x="490" y="226" class="field">EmailAddress (unique)</text><text x="490" y="250" class="field">PhoneNumber</text><text x="490" y="274" class="field">PostalCode</text><text x="490" y="298" class="field">StateOfResidence</text>
+<!-- Applications -->
+<rect x="55" y="400" width="365" height="270" rx="8" class="box"/><path d="M63 400h349a8 8 0 0 1 8 8v33H55v-33a8 8 0 0 1 8-8" class="bar"/>
+<text x="75" y="427" class="head">Applications</text>
+<text x="75" y="463" class="field">PK  ApplicationID</text><text x="75" y="487" class="field">FK  TraineeID</text><text x="75" y="511" class="field">Timestamp</text><text x="75" y="535" class="field">CurrentStatus</text><text x="75" y="559" class="field">Training / financial / language fields</text><text x="75" y="583" class="field">EnglishLevel, DutchLevel, UnderPressure</text><text x="75" y="607" class="field">IT experience / project / motivation fields</text><text x="75" y="631" class="field">ApplicationTerm</text>
+<!-- Mentors -->
+<rect x="455" y="400" width="365" height="270" rx="8" class="box"/><path d="M463 400h349a8 8 0 0 1 8 8v33H455v-33a8 8 0 0 1 8-8" class="bar"/>
+<text x="475" y="427" class="head">Mentors</text>
+<text x="475" y="463" class="field">PK  MentorID</text><text x="475" y="487" class="field">MeetingDate</text><text x="475" y="511" class="field">MentorFullName</text><text x="475" y="535" class="field">FK  TraineeID (nullable)</text><text x="475" y="559" class="field">HasRelevantKnowledge</text><text x="475" y="583" class="field">EligibleForVITProject</text><text x="475" y="607" class="field">Thoughts / AvailabilityStatus</text><text x="475" y="631" class="field">Comments</text>
+<!-- Project Tracking -->
+<rect x="855" y="400" width="365" height="205" rx="8" class="box"/><path d="M863 400h349a8 8 0 0 1 8 8v33H855v-33a8 8 0 0 1 8-8" class="bar"/>
+<text x="875" y="427" class="head">ProjectTracking</text>
+<text x="875" y="463" class="field">PK  ProjectTrackingID</text><text x="875" y="487" class="field">FK  TraineeID</text><text x="875" y="511" class="field">ProjectSubmissionDate</text><text x="875" y="535" class="field">ProjectReviewDate</text>
+<!-- Users -->
+<rect x="920" y="115" width="300" height="205" rx="8" class="box"/><path d="M928 115h284a8 8 0 0 1 8 8v33H920v-33a8 8 0 0 1 8-8" class="bar"/>
+<text x="940" y="142" class="head">Users</text>
+<text x="940" y="178" class="field">PK  UserID</text><text x="940" y="202" class="field">Username (unique)</text><text x="940" y="226" class="field">Password</text><text x="940" y="250" class="field">Role</text><text x="940" y="286" class="note">No FK in assignment schema</text>
+<!-- Relationship lines -->
+<path d="M535 320 V355 H237 V400" class="line"/><text x="300" y="348" class="label">1 : many</text>
+<path d="M635 320 V400" class="line"/><text x="645" y="360" class="label">1 : many</text>
+<path d="M735 320 V355 H1037 V400" class="line"/><text x="850" y="348" class="label">1 : many</text>
+<text x="40" y="720" class="note">A trainee may have multiple applications, mentor records, and project-tracking records.</text>
+</svg>
